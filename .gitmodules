@@ -4,6 +4,6 @@
 [submodule "submodules/diff-gaussian-rasterization"]
 	path = submodules/diff-gaussian-rasterization
 	url = https://github.com/ashawkey/diff-gaussian-rasterization
-[submodule "SIBR_viewers"]
-	path = SIBR_viewers
+[submodule "submodules/SIBR_viewers"]
+	path = submodules/SIBR_viewers
 	url = https://gitlab.inria.fr/sibr/sibr_core
