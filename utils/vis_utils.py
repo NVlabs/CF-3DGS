@@ -184,11 +184,11 @@ plt.rc('legend', fontsize=20)  # using a named size
 
 
 def plot_pose(ref_poses, est_poses, output_path, vid=False):
-    ref_poses = [pose for pose in ref_poses]
+    ref_poses = [pose.numpy() for pose in ref_poses]
     if isinstance(est_poses, dict):
-        est_poses = [pose for k, pose in est_poses.items()]
+        est_poses = [pose.numpy() for k, pose in est_poses.items()]
     else:
-        est_poses = [pose for pose in est_poses]
+        est_poses = [pose.numpy() for pose in est_poses]
     traj_ref = PosePath3D(poses_se3=ref_poses)
     traj_est = PosePath3D(poses_se3=est_poses)
     traj_est_aligned = copy.deepcopy(traj_est)
