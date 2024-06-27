@@ -111,8 +111,12 @@ class GaussianTrainer(object):
         return R[0].numpy(), t[0].numpy(), FoVx, FoVy, intr_mat[0].numpy()
 
     def setup_depth_predictor(self,):
+        # we recommand to use the following depth models:
+        # - "midas" for the Tank and Temples dataset
+        # - "zoe" for the CO3D dataset
+        # - "depth_anything" for the custom dataset
         device = "cuda" if torch.cuda.is_available() else "cpu"
-        if self.depth_model_type == "zeo":
+        if self.depth_model_type == "zoe":
             repo = "isl-org/ZoeDepth"
             model_zoe_n = torch.hub.load(repo, "ZoeD_NK", pretrained=True)
             zoe = model_zoe_n.to(device)
@@ -149,7 +153,7 @@ class GaussianTrainer(object):
         self.mono_depth = OrderedDict()
 
     def predict_depth(self, img):
-        if self.depth_model_type == "zeo":
+        if self.depth_model_type == "zoe":
             depth = self.depth_model.infer_pil(Image.fromarray(img.astype(np.uint8)),
                                                output_type='tensor')
         elif self.depth_model_type == "depth_anything":
