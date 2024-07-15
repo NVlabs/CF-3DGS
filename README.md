@@ -29,6 +29,11 @@
 ## Installation
 
 ##### (Recommended)
+Clone this repository with recurse-submodules argument. It will make sure that the repositories inside submodules folders are properly cloned:
+```bash
+git clone --recurse-submodules https://github.com/NVlabs/CF-3DGS
+```
+
 The codes have been tested on python 3.10, CUDA>=11.6. The simplest way to install all dependences is to use [anaconda](https://www.anaconda.com/) and [pip](https://pypi.org/project/pip/) in the following steps: 
 
 ```bash
