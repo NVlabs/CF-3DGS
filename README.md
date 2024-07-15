@@ -36,6 +36,7 @@ conda create -n cf3dgs python=3.10
 conda activate cf3dgs
 conda install conda-forge::cudatoolkit-dev=11.7.0
 conda install pytorch==2.0.0 torchvision==0.15.0 pytorch-cuda=11.7 -c pytorch -c nvidia
+git clone --recursive git@github.com:NVlabs/CF-3DGS.git
 pip install -r requirements.txt
 ```
 
@@ -70,14 +71,13 @@ python run_cf3dgs.py --source data/Tanks/Francis \
                      --data_type tanks \
                      --model_path ${CKPT_PATH} 
 # by default the checkpoint should be store in "./output/progressive/Tanks_Francis/chkpnt/ep00_init.pth"
-
 # novel view synthesis
 python run_cf3dgs.py --source data/Tanks/Francis \
                      --mode eval_nvs \
                      --data_type tanks \
                      --model_path ${CKPT_PATH} 
 ``` 
-
+We release some of the novel view synthesis results ([gdrive](https://drive.google.com/drive/folders/1p3WljCN90zrm1N5lO-24OLHmUFmFWntt?usp=sharing)) for comparison with future works.
 
 ### Run on your own video
 
@@ -94,3 +94,20 @@ python run_cf3dgs.py -s ./data/$CUSTOM_DATA/ \ # change to your data path
                      --data_type custom
 ```
 
+## Acknowledgement
+Our render is built upon [3DGS](https://github.com/graphdeco-inria/gaussian-splatting). The data processing and visualization codes are partially borrowed from [Nope-NeRF](https://github.com/ActiveVisionLab/nope-nerf/). We thank all the authors for their great repos.
+
+## Citation
+
+If you find this code helpful, please cite:
+
+```
+@InProceedings{Fu_2024_CVPR,
+    author    = {Fu, Yang and Liu, Sifei and Kulkarni, Amey and Kautz, Jan and Efros, Alexei A. and Wang, Xiaolong},
+    title     = {COLMAP-Free 3D Gaussian Splatting},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+    month     = {June},
+    year      = {2024},
+    pages     = {20796-20805}
+}
+```

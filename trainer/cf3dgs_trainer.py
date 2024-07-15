@@ -673,8 +673,7 @@ class CFGaussianTrainer(GaussianTrainer):
         print("{0:.3f}".format(rpe_trans*100),
               '&' "{0:.3f}".format(rpe_rot * 180 / np.pi),
               '&', "{0:.3f}".format(ate))
-        plot_pose(poses_gt, c2ws_est_aligned, pose_path)
-        pdb.set_trace()
+        plot_pose(poses_gt.cpu().numpy(), c2ws_est_aligned.cpu().numpy(), pose_path)
         with open(f"{result_path}/pose_eval.txt", 'w') as f:
             f.write("RPE_trans: {:.03f}, RPE_rot: {:.03f}, ATE: {:.03f}".format(
                 rpe_trans*100,
