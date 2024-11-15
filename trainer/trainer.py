@@ -276,8 +276,8 @@ class GaussianTrainer(object):
             if min(width, height) > 1000:
                 width = width // 2
                 height = height // 2
-            
-            intr_mat[:2, :] /= 2
+                intr_mat[:2, :] /= 2
+
             self.intrinsic = intr_mat
 
 
